@@ -21,7 +21,7 @@ export const USER_DELETE_FAILURE = "USER_DELETE_FAILURE";
 let server =
   process.env.NODE_ENV === "production"
     ? "https://app-Name.herokuapp.com"
-    : "http://localhost:3001";
+    : "http://localhost:3000";
 
 export function getUserPouchesSuccess(data) {
   return {
@@ -43,11 +43,11 @@ export function getUserPouchesRequest() {
   };
 }
 
-export function getUserPouches() {
+export function getUserPouches(user) {
   return dispatch => {
     dispatch(getUserPouchesRequest());
 
-    fetch(`${server}/pouches/currentUser`, { mode: "cors" })
+    fetch(`${server}/pouches/${user._id}`, { mode: "cors" })
       .then(response => {
         if (!response.ok) {
           throw new Error(`${response.status} ${response.statusText}`);
@@ -84,12 +84,12 @@ export function logout(data) {
   };
 }
 
-export function login(username, password) {
+export function login(user) {
   return dispatch => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify(user),
       mode: "cors"
     };
 

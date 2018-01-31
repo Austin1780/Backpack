@@ -1,4 +1,4 @@
-import setCurrentPouch from "./pouchActions";
+import { setCurrentPouch } from "./pouchActions";
 
 export const NEW_ITEM_REQUEST = "NEW_ITEM_REQUEST";
 export const NEW_ITEM_SUCCESS = "NEW_ITEM_SUCCESS";
@@ -38,7 +38,6 @@ export function newItemRequest() {
 }
 
 export function newItem(data) {
-  let item = data.item;
   let pouchId = data.pouchId;
   var myHeaders = new Headers();
 
