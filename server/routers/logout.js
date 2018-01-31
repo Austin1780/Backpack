@@ -1,4 +1,4 @@
-let express = require('express');
+let express = require("express");
 let router = express.Router();
 
 // ----------------------------------------
@@ -11,6 +11,6 @@ const onLogout = async (req, res) => {
   res.status(200).send();
 };
 
-router.get('/', onLogout);
+router.get("/", onLogout);
 
 module.exports = router;

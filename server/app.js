@@ -133,7 +133,6 @@ passport.deserializeUser((id, done) => {
 // ----------------------------------------
 
 const loggedInOnly = (req, res, next) => {
-  console.log(req.body);
   return req.session.passport && req.session.passport.user
     ? next()
     : res.json({ message: "Logged In Only" });
